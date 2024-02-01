@@ -1,4 +1,4 @@
-'''=======================================================
+'''
 Author: Sami Rahman
 Date: 01/02/2024
 Version: 1.0
@@ -167,7 +167,7 @@ while True:
     openAIBot = OpenAIBot()
     my_tweet = openAIBot.askAI(random.choice(post_type_list) + requirements)
 
-    print("Tweeting Now. ")
+    print("Tweeting Now...")
 
     # Create a tweet
     tweeBot = TweeBot()
