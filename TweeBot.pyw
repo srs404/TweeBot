@@ -163,13 +163,12 @@ while True:
             file.write(str(current_date))
         file.close()
 
-    print("Tweeting Now. ")
-
     # Ask AI
     openAIBot = OpenAIBot()
     my_tweet = openAIBot.askAI(random.choice(post_type_list) + requirements)
 
+    print("Tweeting Now. ")
+
     # Create a tweet
     tweeBot = TweeBot()
-    for i in range(0,1):
-        tweeBot.create_tweet(my_tweet)
+    tweeBot.create_tweet(my_tweet)
