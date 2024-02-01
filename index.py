@@ -39,12 +39,14 @@ class OpenAIBot:
         except Exception as e:
             print(f"Error: {e}")
 
+# Data For The Bot
 post_type_list = [
     "write me random meme or joke for programming. ",
     "write me random fact about programming. ",
     "write me random way to be safe from cyber attackers. ",
 ]
 
+# Requirements For The Bot
 requirements = [
     "Should not exceed 280 characters. ", 
     "Do not repeat something that your provided before and Should be tweet friendly and interesting. ", 
@@ -57,11 +59,38 @@ requirements = [
 # Contcatenate the requirements
 requirements = "".join(requirements)
 
-# Ask AI
-openAIBot = OpenAIBot()
-my_tweet = openAIBot.askAI(random.choice(post_type_list) + requirements)
+# Main Loop
+while True:
+    # Read the last date from the file
+    with open("date.ini", "r") as file:
+        last_date = file.read()
+    file.close()
 
-# Create a tweet
-tweeBot = TweeBot()
-for i in range(0,1):
-    tweeBot.create_tweet(my_tweet)
+    current_date = datetime.date.today()
+
+    # Check if last date is today or not
+    if last_date == str(current_date):
+        print("Already Tweeted Today. See you tomorrow or in 4 hours. ")
+        # Future Usage: Sleep For A Day
+        # next_date = current_date + datetime.timedelta(days=1)
+        # time_to_sleep = (next_date - datetime.date.today()).total_seconds()
+
+        # Sleep For 4 Hours
+        time_to_sleep = 14400
+        print(f"Sleeping for {time_to_sleep // 3600} hours")
+        time.sleep(time_to_sleep)
+    else:
+        with open("date.ini", "w") as file:
+            file.write(str(current_date))
+        file.close()
+
+    print("Tweeting Now. ")
+
+    # Ask AI
+    openAIBot = OpenAIBot()
+    my_tweet = openAIBot.askAI(random.choice(post_type_list) + requirements)
+
+    # Create a tweet
+    tweeBot = TweeBot()
+    for i in range(0,1):
+        tweeBot.create_tweet(my_tweet)
