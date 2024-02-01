@@ -14,6 +14,13 @@ Socials:
 ## Purpose:
 An automated bot with integrated OpenAI technology. Generate dynamic random tweets using chatgpt and tweet every 4 hours of device uptime in a day.
 
+## Installation:
+- Clone This Repository `git clone https://github.com/srs404/TweeBot.git`
+- Inside The Cloned Directory, create a json file named `credentials.json`
+- Use the json structure below to shape your `credentials.json` and change the values respectively
+- If your API Keys & Tokens are legit, they should work accordingly with `default` feature.
+- Onwards, you can change it to your own form by editing the list variables `post_type_list` and `requirements` inside the TweeBot.pyw.
+
 ## Usage:
 Change two list items to dynamically generate the intended outcome for a tweet.
 - post_type_list (Type: List)
