@@ -121,14 +121,20 @@ Type: List
 requirements = [
     "Should not exceed 280 characters. ", 
     "Do not repeat something that your provided before and Should be tweet friendly and interesting. ", 
-    "Should include hashtags without spaces. ", 
-    "should always include #srs404 at the end. ", 
+    "Should include hashtags without spaces. ",
     "Also, give different output every time. ",
     "Sometimes, include emojis. "
-    ]
+]
 
-# Contcatenate the requirements
+specific_hash_tags = [
+    "Should always include these hashtags at the end, '",
+    "#TweeBot",
+    "'",
+]
+
+# Contcatenate the requirements & specific_hash_tags
 requirements = "".join(requirements)
+specific_hash_tags = "".join(specific_hash_tags)
 
 '''
 # Title: Main Loop
@@ -165,7 +171,7 @@ while True:
 
     # Ask AI
     openAIBot = OpenAIBot()
-    my_tweet = openAIBot.askAI(random.choice(post_type_list) + requirements)
+    my_tweet = openAIBot.askAI(random.choice(post_type_list) + requirements + specific_hash_tags)
 
     print("Tweeting Now...")
 
